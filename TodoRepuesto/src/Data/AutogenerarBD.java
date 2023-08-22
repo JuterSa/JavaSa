@@ -222,33 +222,7 @@ public void Conexion(){
      public Connection connect() throws SQLException {
         return DriverManager.getConnection("jdbc:mysql://localhost/todo_repuestos","root", "");
     }
-     
- public ArrayList<ClientesD> llenarDatos(){
-     ResultSet result;
-     PreparedStatement pstmt;
-     ArrayList<ClientesD> listarDatos = new ArrayList<>();
-     String query = "SELECT `tod_c_nombre`, `tod_t_documento`, `tod_n_documento`, `tod_n_telefonico`, `tod_sexo`, `tod_d_cliente`, `tod_estado` FROM `tod_clientes`";
-     try {
-         pstmt = conn.prepareStatement(query);
-         result = pstmt.executeQuery();
-         while(result.next()){
-             clientes = new ClientesD();
-             clientes.setTod_c_nombre(result.getString("tod_c_nombre"));
-             clientes.setTod_t_documento(result.getString("tod_t_documento"));
-             clientes.setTod_n_documento(result.getLong("tod_n_documento"));
-             clientes.setTod_n_telefonico(result.getLong("tod_n_telefonico"));
-             clientes.setTod_sexo(result.getString("tod_sexo"));
-             clientes.setTod_d_cliente(result.getString("tod_d_cliente"));
-             clientes.setTod_estado(result.getString("tod_estado"));
-         }
-         result.close();
-         pstmt.close();
-     }   catch (SQLException SqlEx){
-           JOptionPane.showMessageDialog(null, null, "Error al llenar datos de tabla", JOptionPane.ERROR_MESSAGE);
-     }
-        return listarDatos;
-         
-}      
+           
 }
 /*
 CREATE TABLE IF NOT EXISTS  `raf_pendiente` (
